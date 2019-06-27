@@ -16,6 +16,7 @@ function setVideoControlArea() {
     document.getElementById('videos_speed_control_area').innerHTML = '';
     sendMessageToContentScript({ action: 'set_video_control_area' }, function (response) {
         document.getElementById('video_control_area').style.display = "block";
+        response = response === undefined ? 0 : response;
         document.getElementById('videos_count').innerHTML = response;
 
         // loop
@@ -26,8 +27,8 @@ function setVideoControlArea() {
                     setVideoPlaybackRate(i, event.target.value);
                 })
             })
-            document.getElementById('videos_speed_control_area').appendChild(createPlaybackRateLabel(i + 1));
-            document.getElementById('videos_speed_control_area').appendChild(playbackRateControlElement);
+            document.getElementById('videos_speed_control_area')
+                .appendChild(createTableRow((i + 1), playbackRateControlElement));
         }
     });
 }
@@ -51,4 +52,16 @@ function createPlaybackRateControlElement() {
     // TODO
     playbackRateControl.value = '1.0';
     return playbackRateControl;
+}
+
+function createTableRow(index, inputElement) {
+    let tr = document.createElement('tr');
+    let th = document.createElement('th');
+    let td = document.createElement('td');
+    th.innerHTML = index;
+    td.innerHTML = inputElement;
+
+    tr.appendChild(th);
+    tr.appendChild(td);
+    return tr;
 }

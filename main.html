@@ -5,16 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>JVideoSpeeder</title>
-    <style>
-        #video_detect_area {
-            min-width: 130px;
-        }
-
-        #video_control_area {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -22,11 +14,11 @@
         <button id="detectVideoBtn">点击检测网页视频</button>
     </div>
     <div id="video_control_area">
-        <h4>检测到网页里有<span id="videos_count"></span>个视频</h4>
+        <h3>检测到网页里有<span id="videos_count"></span>个视频</h3>
         <!-- 循环输出视频倍速调节区域 -->
-        <div id="videos_speed_control_area">
+        <table id="videos_speed_control_area">
 
-        </div>
+        </table>
     </div>
     <script src="popup.js"></script>
 </body>
